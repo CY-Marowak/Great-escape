@@ -7,10 +7,6 @@
 
 using namespace std;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
 constexpr int Int_max=200;
 constexpr int two_player_w=10;
 constexpr int three_player_w=6;
