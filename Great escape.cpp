@@ -2067,7 +2067,7 @@ public:
             }
         }
         //避免被逼邊關起來 他開場可能還沒用牆壁時先往中靠
-        if(my<=2 && ps[1].mwl>two_player_w-2)
+        if(my<=2 && ps[1].mwl>two_player_w-2 && board[my+1][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my+1, 0);
             if(t.first <= mdis) //往下步數只差1 提前避開陷阱
@@ -2077,7 +2077,7 @@ public:
                 return;
             }
         }
-        if(my>=h-3 && ps[1].mwl>two_player_w-2)
+        if(my>=h-3 && ps[1].mwl>two_player_w-2 && board[my][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my-1, 0);
             if(t.first <= mdis) //往上步數只差1 提前避開陷阱
@@ -2142,7 +2142,7 @@ public:
             }
         }
         //避免被逼邊關起來 他開場可能還沒用牆壁時先往中靠
-        if(my<=2 && ps[1].mwl>three_player_w-2 && ps[0].mwl>three_player_w-2)
+        if(my<=2 && ps[1].mwl>three_player_w-2 && ps[0].mwl>three_player_w-2 && board[my+1][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my+1, 0);
             if(t.first <= mdis) //往下步數只差1 提前避開陷阱
@@ -2152,7 +2152,7 @@ public:
                 return;
             }
         }
-        if(my>=h-3 && ps[1].mwl>three_player_w-2 && ps[0].mwl>three_player_w-2)
+        if(my>=h-3 && ps[1].mwl>three_player_w-2 && ps[0].mwl>three_player_w-2 && board[my][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my-1, 0);
             if(t.first <= mdis) //往上步數只差1 提前避開陷阱
@@ -2268,7 +2268,7 @@ public:
             }
         }
         //避免被逼邊關起來 他開場可能還沒用牆壁時先往中靠
-        if(my<=2 && ps[0].mwl>two_player_w-2)
+        if(my<=2 && ps[0].mwl>two_player_w-2 && board[my+1][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my+1, 1);
             if(t.first <= mdis) //往下步數只差1 提前避開陷阱
@@ -2278,7 +2278,7 @@ public:
                 return;
             }
         }
-        if(my>=h-3 && ps[0].mwl>two_player_w-2)
+        if(my>=h-3 && ps[0].mwl>two_player_w-2 && board[my][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my-1, 1);
             if(t.first <= mdis) //往上步數只差1 提前避開陷阱
@@ -2332,7 +2332,7 @@ public:
         int twodis=ps[2].mstep;
         string twodir=ps[2].path[0].dir;
 
-        if(mx==w-1 && jm.CanMoveF(board, mx, my, 1)) //看看能否不要卡在左最邊
+        if(mx==w-1 && jm.CanMoveF(board, mx, my, 1)) //看看能否不要卡在右最邊
         {
             auto t=jm.BestMoveStep(board, mx-1, my, 1);
             if(t.first == mdis-1) //往左步數一樣 提前走
@@ -2343,7 +2343,7 @@ public:
             }
         }
         //避免被逼邊關起來 他開場可能還沒用牆壁時先往中靠
-        if(my<=2 && ps[0].mwl>three_player_w-2 && ps[2].mwl>three_player_w-2)
+        if(my<=2 && ps[0].mwl>three_player_w-2 && ps[2].mwl>three_player_w-2 && board[my+1][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my+1, 1);
             if(t.first <= mdis) //往下步數只差1 提前避開陷阱
@@ -2353,7 +2353,7 @@ public:
                 return;
             }
         }
-        if(my>=h-3 && ps[0].mwl>three_player_w-2 && ps[2].mwl>three_player_w-2)
+        if(my>=h-3 && ps[0].mwl>three_player_w-2 && ps[2].mwl>three_player_w-2 && board[my][mx].hor==-1)
         {
             auto t=jm.BestMoveStep(board, mx, my-1, 1);
             if(t.first <= mdis) //往上步數只差1 提前避開陷阱
@@ -2473,7 +2473,7 @@ public:
             }
         }
         //避免被逼邊關起來 他開場可能還沒用牆壁時先往中靠
-        if(mx<=2 && ps[0].mwl>three_player_w-2 && ps[1].mwl>three_player_w-2)
+        if(mx<=2 && ps[0].mwl>three_player_w-2 && ps[1].mwl>three_player_w-2 && board[my][mx+1].ver==-1)
         {
             auto t=jm.BestMoveStep(board, mx+1, my, 2);
             if(t.first <= mdis) //往右步數只差1 提前避開陷阱
@@ -2483,7 +2483,7 @@ public:
                 return;
             }
         }
-        if(mx>=w-3 && ps[0].mwl>three_player_w-2 && ps[1].mwl>three_player_w-2)
+        if(mx>=w-3 && ps[0].mwl>three_player_w-2 && ps[1].mwl>three_player_w-2 && board[my][mx].ver==-1)
         {
             auto t=jm.BestMoveStep(board, mx-1, my, 2);
             if(t.first <= mdis) //往左步數只差1 提前避開陷阱
